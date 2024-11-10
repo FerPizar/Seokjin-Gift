@@ -8,6 +8,30 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <audio id="background-music" loop>
+        <source src="./audio/Sudden%20Shower.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        // Select the audio element
+        const audio = document.getElementById('background-music');
+        audio.volume = 0.5;
+        // Try to play the audio on page load
+        window.addEventListener('load', () => {
+            audio.play().catch(error => {
+                console.log("Autoplay blocked. Waiting for user interaction to play audio.");
+            });
+        });
+    
+        document.body.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+            }
+        });
+    </script>
+    
+    
     <div class="container">
         <div class="envelope-wrapper">
             <div class="envelope">
@@ -15,8 +39,7 @@
                     <div class="text">
                         <strong>Dear Person.</strong>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Numquam labore omnis minus maiores laboriosam, facere in beatae esse. 
+                            생일 축하해요 김석진!. 
                         </p>
                     </div>
                 </div>
