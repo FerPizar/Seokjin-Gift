@@ -1,12 +1,12 @@
 :root{
   --primary: #fff;
-  --bg-color: rgb(255, 128, 211);
+  --bg-color: rgb(242, 176, 255);
   --bg-envelope-color: #f5edd1;
   --envelope-tab: #ecdeb8;
   --envelope-cover: #e6cfa7;
   --shadow-color: rgba(0, 0, 0, 0.2);
   --txt-color: #444;
-  --heart-color: rgb(252, 8, 231);
+  --heart-color: rgb(252, 8, 163);
 }
 body{
   margin: 0;
@@ -18,7 +18,7 @@ body{
   justify-content: center;
 }
 .container {
-  height: 100vh;
+  height: 107vh;
   display: grid;
   place-items: center;
 }
@@ -28,8 +28,8 @@ body{
 }
 .envelope-wrapper > .envelope {
   position: relative;
-  width: 500px;
-  height: 430px;
+  width: 610px;
+  height: 450px;
 }
 .envelope-wrapper > .envelope::before {
   content: "";
@@ -37,8 +37,8 @@ body{
   top: 0;
   z-index: 2;
   border-top: 230px solid var(--envelope-tab);
-  border-right: 250px solid transparent;
-  border-left: 250px solid transparent;
+  border-right: 300px solid transparent;
+  border-left: 310px solid transparent;
   transform-origin: top;
   transition: all 0.5s ease-in-out 0.7s;
 }
@@ -49,16 +49,16 @@ body{
   width: 0px;
   height: 0px;
   border-top: 230px solid transparent;
-  border-right: 250px solid var(--envelope-cover);
-  border-bottom: 200px solid var(--envelope-cover);
-  border-left: 250px solid var(--envelope-cover);
+  border-right: 300px solid var(--envelope-cover);
+  border-bottom: 220px solid var(--envelope-cover);
+  border-left: 310px solid var(--envelope-cover);
 }
 .envelope > .letter {
   position: absolute;
   right: 20%;
   bottom: 0;
   width: 54%;
-  height: 80%;
+  height: 77%;
   background: var(--primary);
   text-align: center;
   transition: all 1s ease-in-out;
@@ -67,15 +67,16 @@ body{
 }
 
 .envelope > .letter > .text {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Yeon Sung', cursive, sans-serif;
   color: var(--txt-color);
   text-align: left;
-  font-size: 10px;
+  font-size: 16px;
 }
+
 .heart {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 53%;
+  left: 50.3%;
   width: 15px;
   height: 15px;
   background: var(--heart-color);
@@ -113,3 +114,10 @@ body{
   transform: rotate(90deg);
   transition-delay: 0.4s;
 }
+
+.fas.fa-birthday-cake {
+  color: #ffd051; /* Adjust color */
+  font-size: 24px; /* Adjust size */
+  margin-left: 5px; /* Add spacing if needed */
+}
+
