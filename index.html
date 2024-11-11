@@ -7,6 +7,29 @@
     <title>CSS Envelope + Letter (Open/Close on Click)</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <style>
+        /* Sparkle effect styling */
+        .sparkle-text {
+            color: #f8b400;
+            font-size: 24px; /* Increase size if needed */
+            font-family: 'Yeon Sung', cursive; /* Ensure font consistency */
+            animation: sparkle 1s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { 
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 
+                             0 0 10px rgba(255, 215, 0, 0.6), 
+                             0 0 15px rgba(255, 215, 0, 1); 
+            }
+            50% { 
+                text-shadow: 0 0 10px rgba(255, 255, 255, 1), 
+                             0 0 20px rgba(255, 215, 0, 0.8), 
+                             0 0 30px rgba(255, 215, 0, 1); 
+            }
+        }
+    </style>
 </head>
 <body>
     <audio id="background-music" loop>
@@ -32,13 +55,13 @@
         });
     </script>
     
-    
+    <!-- Envelope structure with sparkle effect applied -->
     <div class="container">
         <div class="envelope-wrapper">
             <div class="envelope">
                 <div class="letter">
-                    <div class="text">
-                        <strong>Dear Person.</strong>
+                    <div class="text sparkle-text">
+                        <strong>Dear Seokjin. <i class="fas fa-birthday-cake"></i></strong>
                         <p>
                             생일 축하해요 김석진!. 
                         </p>

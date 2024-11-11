@@ -58,7 +58,7 @@ body{
   right: 20%;
   bottom: 0;
   width: 54%;
-  height: 80%;
+  height: 77%;
   background: var(--primary);
   text-align: center;
   transition: all 1s ease-in-out;
@@ -113,5 +113,11 @@ body{
 .flap > .heart {
   transform: rotate(90deg);
   transition-delay: 0.4s;
+}
+
+.fas.fa-birthday-cake {
+  color: #ffd051; /* Adjust color */
+  font-size: 24px; /* Adjust size */
+  margin-left: 5px; /* Add spacing if needed */
 }
 
