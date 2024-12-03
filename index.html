@@ -13,6 +13,8 @@
       height: 100vh;
       background-color: #fae1dd;
       margin: 0;
+      flex-direction: column;
+      justify-content: space-around; 
     }
 
     .container {
@@ -253,11 +255,51 @@
     .card.show-text .text {
     opacity: 1;
     }
+    #sparkle-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+    }
+
+    @keyframes fall-sparkle {
+    0% {
+        transform: translateY(-100vh);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+    }
+
+    .sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: silver;
+    border-radius: 50%;
+    opacity: 0.8;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    animation: fall-sparkle 15s linear infinite, fade-sparkle 10s ease-in-out infinite; /* Adjusted duration */
+    }
+
+    @keyframes fade-sparkle {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    }
 
   </style>
 </head>
 <body>
   <!-- Seokjini's Card -->
+  <div id="sparkle-wrapper"></div>
   <div class="container">
     <div class="valentines">
       <div class="envelope"></div>
@@ -287,14 +329,13 @@
     document.addEventListener("DOMContentLoaded", function () {
       const card = document.getElementById("valentine-card");
       const audioPlayer = document.getElementById("audio-player");
-      const confettiWrapper = document.getElementById("confetti-wrapper");
+      const sparkleWrapper = document.getElementById("sparkle-wrapper");
 
       // Play audio
       audioPlayer.volume = 0.5;
       audioPlayer.src = "./audio/Sudden Shower.mp3";
       audioPlayer.play().catch(() => console.log("Autoplay blocked. Waiting for user interaction."));
 
-      // Play audio on click if autoplay blocked
       document.body.addEventListener("click", () => {
         if (audioPlayer.paused) {
           audioPlayer.play();
@@ -310,6 +351,20 @@
       } else {
         console.error("Card element not found!");
       }
+
+      // Create sparkles
+      function createSparkles() {
+        for (let i = 0; i < 100; i++) {
+          const sparkle = document.createElement("div");
+          sparkle.classList.add("sparkle");
+          sparkle.style.left = Math.random() * 100 + "%";
+          sparkle.style.animationDelay = Math.random() * 5 + "s";
+          sparkle.style.animationDuration = Math.random() * 10 + 5 + "s";
+          sparkleWrapper.appendChild(sparkle);
+        }
+      }
+
+      createSparkles();
     });
   </script>
 </body>
