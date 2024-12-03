@@ -16,7 +16,13 @@
       flex-direction: column;
       justify-content: space-around; 
     }
-
+    #banner {
+      margin-top: -120px;
+      width: 100%;
+      max-width: 300px; /* Adjust this based on your banner size */
+      display: block;
+      object-fit: contain;
+    }
     .container {
       position: relative;
     }
@@ -306,14 +312,16 @@
 <body>
   <!-- Seokjini's Card -->
   <div id="sparkle-wrapper"></div>
+  <img id="banner" src="banner.png" alt="Happy Birthday Banner">
     <div class="container">
     <div class="valentines">
+       
         <div class="envelope"></div>
         <div class="front"></div>
         <div class="card" id="valentine-card">
         <div class="text">
             <p class="centered-text">
-            꽃잎이 땅을 감싸 안기 위해 떨어지는 것처럼, 당신에 대한 나의 사랑은 당신의 마음속에서 그 집을 찾습니다.♡<br>
+            꽃잎이 땅을 감싸 안기 위해 떨어지는 것처럼, 당신에 대한 나의 사랑은 당신의 마음속에서 그 집을 찾습니다. ♡ 석지니 ♡<br>
             당신은 내 인생을 기쁨과 열정, 끝없는 사랑의 색조로 그리는 내 세상의 예술가입니다.
             </p>
         </div>
@@ -340,18 +348,33 @@
       const card = document.getElementById("valentine-card");
       const audioPlayer = document.getElementById("audio-player");
       const sparkleWrapper = document.getElementById("sparkle-wrapper");
-
-      // Play audio
+  
+      // Playlist array
+      const songs = ["./audio/Sudden Shower.mp3", "./audio/그리움에.mp3"];
+      let currentSongIndex = 0;
+  
+      // Function to play the next song
+      function playNextSong() {
+        currentSongIndex = (currentSongIndex + 1) % songs.length; // Increment index, loop back if at the end
+        audioPlayer.src = songs[currentSongIndex]; // Set the next song
+        audioPlayer.play(); // Play the next song
+      }
+  
+      // Event listener for when a song ends
+      audioPlayer.addEventListener("ended", playNextSong);
+  
+      // Initial audio setup
       audioPlayer.volume = 0.5;
-      audioPlayer.src = "./audio/Sudden Shower.mp3";
+      audioPlayer.src = songs[currentSongIndex];
       audioPlayer.play().catch(() => console.log("Autoplay blocked. Waiting for user interaction."));
-
+  
+      // Ensure audio plays on user interaction if autoplay is blocked
       document.body.addEventListener("click", () => {
         if (audioPlayer.paused) {
           audioPlayer.play();
         }
       });
-
+  
       // Slide card and reveal text
       if (card) {
         setTimeout(() => {
@@ -361,7 +384,7 @@
       } else {
         console.error("Card element not found!");
       }
-
+  
       // Create sparkles
       function createSparkles() {
         for (let i = 0; i < 100; i++) {
@@ -375,6 +398,6 @@
       }
       createSparkles();
     });
-  </script>
+  </script>  
 </body>
 </html>
