@@ -231,6 +231,29 @@
         opacity: 0.5;
       }
     }
+    
+    .envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: #f08080;
+    border-radius: 15px;
+    box-shadow: 0 0 20px 5px rgba(255, 182, 193, 0.7); /* Pink glow! */
+    transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .envelope:hover {
+    box-shadow: 0 0 30px 10px rgba(255, 182, 193, 1); /* Glow intensifies on hover */
+    }
+    .card .text {
+    opacity: 0;
+    transition: opacity 2s ease-in;
+    }
+
+    .card.show-text .text {
+    opacity: 1;
+    }
+
   </style>
 </head>
 <body>
@@ -254,6 +277,7 @@
     </div>
     <div class="shadow"></div>
   </div>
+
   <audio id="audio-player">
     <source src="./audio/Sudden Shower.mp3" type="audio/mp3">
     Your browser does not support the audio element.
@@ -263,42 +287,25 @@
     document.addEventListener("DOMContentLoaded", function () {
       const card = document.getElementById("valentine-card");
       const audioPlayer = document.getElementById("audio-player");
-      const audioFiles = [
-        "./audio/Sudden Shower.mp3",
-        "./audio/그리움에.mp3"
-      ];
-      let currentAudioIndex = 0;
+      const confettiWrapper = document.getElementById("confetti-wrapper");
 
-      // Attempt autoplay on page load
-      audioPlayer.volume = 0.5; // Set volume to 50%
-      audioPlayer.src = audioFiles[currentAudioIndex];
-      audioPlayer.play().catch(error => {
-        console.log("Autoplay blocked. Waiting for user interaction to play audio.");
-      });
+      // Play audio
+      audioPlayer.volume = 0.5;
+      audioPlayer.src = "./audio/Sudden Shower.mp3";
+      audioPlayer.play().catch(() => console.log("Autoplay blocked. Waiting for user interaction."));
 
-      // Play on user interaction if autoplay fails
-      document.body.addEventListener('click', () => {
+      // Play audio on click if autoplay blocked
+      document.body.addEventListener("click", () => {
         if (audioPlayer.paused) {
           audioPlayer.play();
-          console.log("Playing audio on user interaction.");
         }
       });
 
-      // Play next audio when the current one ends
-      audioPlayer.addEventListener("ended", function () {
-        currentAudioIndex++;
-        if (currentAudioIndex < audioFiles.length) {
-          audioPlayer.src = audioFiles[currentAudioIndex];
-          audioPlayer.play();
-        } else {
-          console.log("Playlist ended.");
-        }
-      });
-
-      // Slide the card up after 3 seconds
+      // Slide card and reveal text
       if (card) {
         setTimeout(() => {
           card.style.transform = "translateY(-100px)";
+          card.classList.add("show-text");
         }, 3000);
       } else {
         console.error("Card element not found!");
