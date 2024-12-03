@@ -60,23 +60,29 @@
     .card:before {
       content: "";
       position: absolute;
-      border: 3px solid #003049;
+      border: 2px solid #ff0044;
       border-style: dotted;
-      width: 240px;
+      width: 250px;
       height: 140px;
-      left: 12px;
+      left: 8px;
       top: 12px;
     }
-
-    .text {
-      position: absolute;
-      font-family: 'Yeon Sung', cursive;
-      font-size: 28px;
+    .card .text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      line-height: 25px;
-      top: 19px;
-      left: 85px;
-      color: #003049;
+      padding: 10px;
+      font-family: 'Yeon Sung', cursive;
+      line-height: 1.5;
+      font-size: 16px;
+      opacity: 0;
+      transition: opacity 2s ease-in;
+    }
+
+    .card.show-text .text {
+      opacity: 1;
     }
 
     .heart {
@@ -294,31 +300,35 @@
         opacity: 0.3;
     }
     }
-
+    
   </style>
 </head>
 <body>
   <!-- Seokjini's Card -->
   <div id="sparkle-wrapper"></div>
-  <div class="container">
+    <div class="container">
     <div class="valentines">
-      <div class="envelope"></div>
-      <div class="front"></div>
-      <div class="card" id="valentine-card">
+        <div class="envelope"></div>
+        <div class="front"></div>
+        <div class="card" id="valentine-card">
         <div class="text">
-            생일 축하해요<br>Seokjin! 💖       
-         </div>
-      </div>
-      <div class="hearts">
+            <p class="centered-text">
+            꽃잎이 땅을 감싸 안기 위해 떨어지는 것처럼, 당신에 대한 나의 사랑은 당신의 마음속에서 그 집을 찾습니다.♡<br>
+            당신은 내 인생을 기쁨과 열정, 끝없는 사랑의 색조로 그리는 내 세상의 예술가입니다.
+            </p>
+        </div>
+        </div>
+        <div class="hearts">
         <div class="one"></div>
         <div class="two"></div>
         <div class="three"></div>
         <div class="four"></div>
         <div class="five"></div>
-      </div>
+        </div>
     </div>
     <div class="shadow"></div>
-  </div>
+</div>
+
 
   <audio id="audio-player">
     <source src="./audio/Sudden Shower.mp3" type="audio/mp3">
@@ -345,7 +355,7 @@
       // Slide card and reveal text
       if (card) {
         setTimeout(() => {
-          card.style.transform = "translateY(-100px)";
+          card.style.transform = "translateY(-130px)";
           card.classList.add("show-text");
         }, 3000);
       } else {
@@ -363,7 +373,6 @@
           sparkleWrapper.appendChild(sparkle);
         }
       }
-
       createSparkles();
     });
   </script>
