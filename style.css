@@ -39,7 +39,7 @@ body {
   position: absolute;
   background-color: #eae2b7;
   width: 270px;
-  height: 170px;
+  height: 300px;
   top:5px;
   left:15px;
   box-shadow: -5px -5px 100px rgba(0,0,0,0.4); 
@@ -59,7 +59,7 @@ body {
 .text {
   position: absolute;
   font-family: 'Yeon Sung', cursive;  
-  font-size: 28px;
+  font-size: 24px;
   text-align: center;
   line-height:25px;
   top:19px;
